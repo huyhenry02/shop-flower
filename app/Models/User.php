@@ -15,7 +15,7 @@ class User extends Authenticatable
     public const ROLE_ADMIN = 'admin';
     public const ROLE_CUSTOMER = 'customer';
 
-    public const ROLE_TYPES = [
+    public const ROLES = [
         self::ROLE_ADMIN,
         self::ROLE_CUSTOMER,
     ];
@@ -29,7 +29,7 @@ class User extends Authenticatable
         'name',
         'email',
         'phone',
-        'role_type',
+        'role',
         'password',
     ];
 

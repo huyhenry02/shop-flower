@@ -17,6 +17,10 @@ Route::group([
 ], function () {
     Route::get('/login', [AuthController::class, 'showLogin'])->name('auth.showLogin');
     Route::get('/register', [AuthController::class, 'showRegister'])->name('auth.showRegister');
+
+    Route::post('/register', [AuthController::class, 'postRegister'])->name('auth.postRegister');
+    Route::post('/login', [AuthController::class, 'postLogin'])->name('auth.postLogin');
+    Route::get('/logout', [AuthController::class, 'logout'])->name('auth.logout')->middleware('auth');
 });
 Route::group([
     'prefix' => 'admin',
@@ -42,7 +46,11 @@ Route::group([
     ], function () {
         Route::get('/', [AdminTagController::class, 'showIndex'])->name('admin.tag.showIndex');
         Route::get('/create', [AdminTagController::class, 'showCreate'])->name('admin.tag.showCreate');
-        Route::get('/update/', [AdminTagController::class, 'showUpdate'])->name('admin.tag.showUpdate');
+        Route::get('/update/{tag}', [AdminTagController::class, 'showUpdate'])->name('admin.tag.showUpdate');
+
+        Route::post('/create', [AdminTagController::class, 'postCreate'])->name('admin.tag.postCreate');
+        Route::post('/update/{tag}', [AdminTagController::class, 'postUpdate'])->name('admin.tag.postUpdate');
+        Route::get('/delete/{tag}', [AdminTagController::class, 'delete'])->name('admin.tag.delete');
     });
 
     Route::group([
@@ -50,7 +58,11 @@ Route::group([
     ], function () {
         Route::get('/', [AdminCategoryController::class, 'showIndex'])->name('admin.category.showIndex');
         Route::get('/create', [AdminCategoryController::class, 'showCreate'])->name('admin.category.showCreate');
-        Route::get('/update/', [AdminCategoryController::class, 'showUpdate'])->name('admin.category.showUpdate');
+        Route::get('/update/{category}', [AdminCategoryController::class, 'showUpdate'])->name('admin.category.showUpdate');
+
+        Route::post('/create', [AdminCategoryController::class, 'postCreate'])->name('admin.category.postCreate');
+        Route::post('/update/{category}', [AdminCategoryController::class, 'postUpdate'])->name('admin.category.postUpdate');
+        Route::get('/delete/{category}', [AdminCategoryController::class, 'delete'])->name('admin.category.delete');
     });
 
     Route::group([

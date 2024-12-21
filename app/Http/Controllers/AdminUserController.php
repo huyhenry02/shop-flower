@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Contracts\View\View;
 use Illuminate\Contracts\View\Factory;
@@ -11,7 +12,12 @@ class AdminUserController extends Controller
 {
     public function showIndex(): View|Factory|Application
     {
-        return view('admin.page.user.index');
+        $users = User::where('role', 'customer')->get();
+        return view('admin.page.user.index',
+            [
+                'users' => $users
+            ]
+        );
     }
 
     public function showCreate(): View|Factory|Application

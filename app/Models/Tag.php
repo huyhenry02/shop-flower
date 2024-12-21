@@ -10,6 +10,7 @@ class Tag extends Model
     protected $table = 'tags';
     protected $fillable = [
         'name',
+        'background_color'
     ];
 
     public function products(): BelongsToMany

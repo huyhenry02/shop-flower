@@ -17,14 +17,40 @@
                     <tr>
                         <th scope="col" width="5%">STT</th>
                         <th scope="col">Tên</th>
+                        <th class="text-center" scope="col" width="15%">Màu</th>
                         <th class="text-center" scope="col"></th>
                     </tr>
                     </thead>
                     <tbody>
-
+                    @foreach($tags as $key => $tag)
+                        <tr>
+                            <td>{{ $key + 1 }}</td>
+                            <td>{{ $tag->name }}</td>
+                            <td class="text-center">
+                                <div style="width: 100%; height: 30px; background-color: {{ $tag->background_color }}"></div>
+                            </td>
+                            <td class="text-center">
+                                <a href="{{ route('admin.tag.showUpdate', $tag->id) }}"
+                                   class="btn btn-sm btn-primary">
+                                    <i class="fas fa-edit"></i>
+                                </a>
+                                <button class="btn btn-sm btn-danger"
+                                        onclick="confirmDelete('{{ route('admin.tag.delete', $tag->id) }}')">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    @endforeach
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
+    <script>
+        function confirmDelete(url) {
+            if (confirm('Bạn có chắc chắn muốn xóa thẻ này không?')) {
+                window.location.href = url;
+            }
+        }
+    </script>
 @endsection

@@ -81,8 +81,8 @@
                             />
                         </div>
                         <span class="profile-username">
-                      <span class="op-7">Xin chào,</span>
-                      <span class="fw-bold">{{ auth()->user()->full_name ?? '' }}</span>
+                      <span class="op-7 text-dark">Xin chào,</span>
+                      <span class="fw-bold text-dark">{{ auth()->user()->name ?? '' }}</span>
                     </span>
                     </a>
                     <ul class="dropdown-menu dropdown-user animated fadeIn">
@@ -97,14 +97,14 @@
                                         />
                                     </div>
                                     <div class="u-text">
-                                        <h4>{{ auth()->user()->full_name ?? '' }}</h4>
+                                        <h4>{{ auth()->user()->name ?? '' }}</h4>
                                         <p class="text-muted">{{ auth()->user()->email ?? '' }}</p>
                                     </div>
                                 </div>
                             </li>
                             <li>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="">Đăng xuất</a>
+                                <a class="dropdown-item" href="{{ route("auth.logout") }}">Đăng xuất</a>
                             </li>
                         </div>
                     </ul>
