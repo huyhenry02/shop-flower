@@ -24,6 +24,27 @@
                     </tr>
                     </thead>
                     <tbody>
+                    @foreach($products as $key => $product)
+                        <tr>
+                            <td>{{ $key + 1 }}</td>
+                            <td>{{ $product->name ?? '' }}</td>
+                            <td>{{ $product->category->name ?? ''}}</td>
+                            <td>{{ number_format($product->price) ?? 0}} VNĐ</td>
+                            <td>
+                                <img src="" alt="{{ $product->name }}" width="100">
+                            </td>
+                            <td class="text-center">
+                                <a href="#"
+                                   class="btn btn-sm btn-primary">
+                                    <i class="fas fa-edit"></i>
+                                </a>
+                                <a href="#"
+                                   class="btn btn-sm btn-danger">
+                                    <i class="fas fa-trash"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    @endforeach
 
                     </tbody>
                 </table>
