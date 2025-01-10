@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Contracts\View\View;
 use Illuminate\Contracts\View\Factory;
@@ -16,7 +18,13 @@ class IndexCustomerController extends Controller
 
     public function showProduct(): View|Factory|Application
     {
-        return view('shop.page.product');
+        $categories = Category::all();
+        $products = Product::all();
+        return view('shop.page.product',
+            [
+                'categories' => $categories,
+                'products' => $products
+            ]);
     }
 
     public function showProductDetail(): View|Factory|Application
