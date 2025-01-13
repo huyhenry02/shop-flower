@@ -30,6 +30,8 @@ class Order extends Model
         'shipping_email',
         'order_date',
         'total',
+        'reject_reason',
+        'note',
         'status',
     ];
 

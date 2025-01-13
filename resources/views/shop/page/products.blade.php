@@ -137,7 +137,7 @@
                                     <div class="col-md-6 col-lg-6 col-xl-4">
                                         <div class="rounded position-relative fruite-item">
                                             <div class="fruite-img">
-                                                <img src="/shop/img/fruite-item-5.jpg" class="img-fluid w-100 rounded-top" alt="">
+                                                <img src="{{ $product->list_image ?? '' }}" class="img-fluid w-100 rounded-top" alt="">
                                             </div>
                                             <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">{{ $product->category?->name ?? '' }}</div>
                                             <div class="p-4 border border-secondary border-top-0 rounded-bottom">
@@ -146,8 +146,13 @@
                                                 <div class="d-flex justify-content-between flex-lg-wrap">
                                                     <p class="text-dark fs-5 fw-bold mb-0">{{ number_format($product->price) ?? 0}} VNĐ</p>
                                                     <div class="d-flex">
-                                                        <a href="{{ route('customer.showCart') }}" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag text-primary"></i></a>
-                                                        <a href="{{ route('customer.showProductDetail') }}" class="btn border border-secondary rounded-pill px-3 text-secondary"><i class="fa fa-eye text-secondary"></i></a>
+                                                        <form action="{{ route('customer.addToCart') }}" method="post">
+                                                            @csrf
+                                                            <button class="btn border border-secondary rounded-pill px-3 text-primary" type="submit"><i class="fa fa-shopping-bag text-primary"></i>
+                                                                <input type="hidden" name="product_id" value="{{ $product->id }}">
+                                                            </button>
+                                                        </form>
+                                                        <a href="{{ route('customer.showProductDetail', $product->id) }}" class="btn border border-secondary rounded-pill px-3 text-secondary"><i class="fa fa-eye text-secondary"></i></a>
                                                     </div>
                                                 </div>
                                             </div>

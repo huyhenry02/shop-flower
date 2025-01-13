@@ -26,10 +26,9 @@ return new class extends Migration
             $table->unsignedBigInteger('category_id');
             $table->integer('price');
             $table->string('description')->nullable();
-            $table->string('main_image');
-            $table->string('sub_image_1')->nullable();
-            $table->string('sub_image_2')->nullable();
-            $table->string('sub_image_3')->nullable();
+            $table->string('detail_image');
+            $table->string('feature_image')->nullable();
+            $table->string('list_image')->nullable();
             $table->timestamps();
 
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');

@@ -14,10 +14,9 @@ class Product extends Model
         'name',
         'description',
         'price',
-        'main_image',
-        'sub_image_1',
-        'sub_image_2',
-        'sub_image_3',
+        'detail_image',
+        'feature_image',
+        'list_image',
     ];
 
     public function category(): BelongsTo

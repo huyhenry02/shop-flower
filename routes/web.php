@@ -77,10 +77,15 @@ Route::group([
     'prefix' => 'customer'
 ], function () {
     Route::get('/', [IndexCustomerController::class, 'showIndex'])->name('customer.showIndex');
-    Route::get('/product', [IndexCustomerController::class, 'showProduct'])->name('customer.showProduct');
-    Route::get('/product-detail', [IndexCustomerController::class, 'showProductDetail'])->name('customer.showProductDetail');
+    Route::get('/products', [IndexCustomerController::class, 'showProducts'])->name('customer.showProducts');
+    Route::get('/product-detail/{product}', [IndexCustomerController::class, 'showProductDetail'])->name('customer.showProductDetail');
     Route::get('/cart', [IndexCustomerController::class, 'showCart'])->name('customer.showCart');
     Route::get('/checkout', [IndexCustomerController::class, 'showCheckout'])->name('customer.showCheckout');
     Route::get('/contact', [IndexCustomerController::class, 'showContact'])->name('customer.showContact');
     Route::get('/your-order', [IndexCustomerController::class, 'showYourOrder'])->name('customer.showYourOrder');
+
+    Route::post('/add-to-cart', [IndexCustomerController::class, 'addToCart'])->name('customer.addToCart');
+    Route::get('/remove-cart-item/{cart}', [IndexCustomerController::class, 'removeCartItem'])->name('customer.removeCartItem');
+    Route::post('/update-quantity', [IndexCustomerController::class, 'updateQuantity'])->name('customer.updateQuantity');
+    Route::post('/checkout', [IndexCustomerController::class, 'postCheckout'])->name('customer.postCheckout');
 });

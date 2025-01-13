@@ -21,7 +21,7 @@
                             @csrf
                             <div class="mb-3">
                                 <label for="email" class="form-label">Email</label>
-                                <input type="email" id="email" name="email" class="form-control form-control-lg border-secondary" placeholder="Nhập địa chỉ email của bạn" required>
+                                <input type="email" id="email" name="email" class="form-control form-control-lg border-secondary" placeholder="Nhập email" required>
                             </div>
                             <div class="mb-3">
                                 <label for="password" class="form-label">Mật khẩu</label>
