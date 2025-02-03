@@ -71,7 +71,27 @@ class IndexCustomerController extends Controller
 
     public function showYourOrder(): View|Factory|Application
     {
-        return view('shop.page.your-order');
+        $orders = Order::where('user_id', auth()->id())->get();
+        $data = $orders->map(function ($order) {
+            return [
+                'code' => $order->code,
+                'order_date' => $order->order_date,
+                'status' => $order->status,
+                'total' => $order->total,
+                'items' => $order->orderDetails->map(function ($item) {
+                    return [
+                        'product_name' => $item->product->name,
+                        'quantity' => $item->quantity,
+                        'size' => $item->size,
+                        'sub_total' => number_format($item->sub_total, 0, ',', '.'),
+                    ];
+                })->toArray()
+            ];
+        });
+        return view('shop.page.your-order'
+            , [
+                'orders' => $data
+            ]);
     }
 
     public function addToCart(Request $request): RedirectResponse

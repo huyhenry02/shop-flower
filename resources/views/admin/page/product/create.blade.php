@@ -76,24 +76,6 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row mt-3">
-                            <div class="col-3">
-                                <div class="form-group">
-                                </div>
-                            </div>
-                            <div class="col-3">
-                                <div class="form-group">
-                                </div>
-                            </div>
-                            <div class="col-3">
-                                <div class="form-group">
-                                </div>
-                            </div>
-                            <div class="col-3">
-                                <div class="form-group">
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
                 <div class="card-action text-end">
