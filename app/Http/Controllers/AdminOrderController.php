@@ -33,9 +33,15 @@ class AdminOrderController extends Controller
             ]);
     }
 
-    public function showUpdate(): View|Factory|Application
+    public function showUpdate(Order $order): View|Factory|Application
     {
-        return view('admin.page.order.update');
+        $products = Product::all();
+        return view('admin.page.order.update',
+            [
+                'order' => $order,
+                'products' => $products
+            ]
+        );
     }
 
     public function postCreate(Request $request): RedirectResponse
