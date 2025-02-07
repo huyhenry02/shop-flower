@@ -70,9 +70,10 @@ Route::group([
     ], function () {
         Route::get('/', [AdminOrderController::class, 'showIndex'])->name('admin.order.showIndex');
         Route::get('/create', [AdminOrderController::class, 'showCreate'])->name('admin.order.showCreate');
-        Route::get('/update/', [AdminOrderController::class, 'showUpdate'])->name('admin.order.showUpdate');
+        Route::get('/update/{id}', [AdminOrderController::class, 'showUpdate'])->name('admin.order.showUpdate');
 
         Route::post('/create', [AdminOrderController::class, 'postCreate'])->name('admin.order.postCreate');
+        Route::post('/update/{id}', [AdminOrderController::class, 'postUpdate'])->name('admin.order.postUpdate');
     });
 });
 Route::group([

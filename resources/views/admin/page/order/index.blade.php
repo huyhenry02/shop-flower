@@ -50,7 +50,7 @@
                                    class="btn btn-sm btn-secondary">
                                     <i class="fas fa-eye"></i>
                                 </a>
-                                <a href="#"
+                                <a href="{{route("admin.order.showUpdate", $order->id)}}"
                                    class="btn btn-sm btn-primary">
                                     <i class="fas fa-edit"></i>
                                 </a>
